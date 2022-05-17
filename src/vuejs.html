@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="/dist/output.css" rel="stylesheet">
+</head>
+<body>
+    <div id="app" class="bg-white rounded p-4 shadow-md overflow-hidden">
+        <div class="flex justify-between items-center">
+            <h1 id="display" class="text-4xl">{{display}}</h1>
+            <button id="del" class="border text-gray-800 border-purple-600 hover:bg-purple-500 hover:text-white text-xl uppercase font-bold text-white p-2 rounded">Del</button>
+        </div>
+        
+        <div class="grid grid-cols-4 gap-2" id="voice-container">
+            <div :class="['border text-center py-5 rounded mt-3 our-voice',{'bg-gray-400' : v.isPress}]" v-for="v in voice" @click="run(v)">
+                <h4>{{v.name}}</h4>
+            </div>
+        </div>
+       
+    </div>
+    <script src="vue@2.js"></script>
+    <script>
+        let voice=["we","want","our","vote","justice","leader","must","respect","release","democracy","need","win"];
+        let app=new Vue({
+            el : "#app",
+            data : {
+                display:"",
+                
+                voice : [
+                    { name : "we" ,isPress : false },
+                    { name : "want" ,isPress : false },
+                    { name : "our" ,isPress : false },
+                    { name : "vote" ,isPress : false },
+                    { name : "justice" ,isPress : false },
+                    { name : "leader" ,isPress : false },
+                    { name : "must" ,isPress : false },
+                    { name : "respect" ,isPress : false },
+                    { name : "release" ,isPress : false },
+                    { name : "democracy" ,isPress : false },
+                    { name : "we" ,isPress : false },
+                    { name : "win" ,isPress : false },
+                ]
+            },
+            methods:{
+                run(v){
+                    console.log(v)
+                    this.display +=v.name+" ";
+                    v.isPress=true;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

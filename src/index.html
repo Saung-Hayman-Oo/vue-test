@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="/dist/output.css" rel="stylesheet">
+</head>
+<body>
+    <div class="bg-white rounded p-4 shadow-md overflow-hidden">
+        <div class="flex justify-between items-center">
+            <h1 id="display" class="text-4xl">Hello World!</h1>
+            <button id="del" class="border text-gray-800 border-purple-600 hover:bg-purple-500 hover:text-white text-xl uppercase font-bold text-white p-2 rounded">Del</button>
+        </div>
+        
+        <div class="grid grid-cols-4 gap-4" id="voice-container">
+            
+        </div>
+       
+    </div>
+
+    <script src="jquery.min.js"></script>
+    <script>
+        let voice=["we","want","our","vote","justice","leader","must","respect","release","democracy","need","win"];
+
+        voice.map(el=>{
+            $('#voice-container').append(
+                `
+                    <div class="border text-center py-5 rounded mt-3 our-voice">
+                    <h4>${el}</h4>
+                    </div>
+                `
+            )
+        });
+        $(".our-voice").click(function(){
+            let currentText=$(this).text();
+            let placeholderText=$("#display").text();
+            if(placeholderText.toLowerCase()==="hello world!"){
+                $("#display").html(" ");
+            }
+            $("#display").append(currentText+' ');
+            $(this).addClass("bg-gray-200")
+        })
+        $("#del").click(function(){
+            $("#display").empty();
+            $(".our-voice").removeClass("bg-gray-200");
+        })
+    </script>
+</body>
+</html>
